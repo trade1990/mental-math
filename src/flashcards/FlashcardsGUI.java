@@ -5,7 +5,9 @@
  */
 package flashcards;
 
-import java.awt.event.ActionListener;
+import java.util.Date;
+import java.util.TimerTask;
+import java.util.Timer;
 
 /**
  *
@@ -39,6 +41,8 @@ public class FlashcardsGUI extends javax.swing.JFrame {
         startButton = new javax.swing.JButton();
         notificationLabel = new javax.swing.JLabel();
         titleLabel = new javax.swing.JLabel();
+        answerButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Orion Flashcards");
@@ -47,32 +51,41 @@ public class FlashcardsGUI extends javax.swing.JFrame {
         displayLabel.setBackground(new java.awt.Color(255, 255, 255));
         displayLabel.setFont(new java.awt.Font("Arial", 0, 120)); // NOI18N
         displayLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        displayLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        intervalLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        intervalLabel.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        intervalLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         intervalLabel.setText("Interval (seconds)");
+        intervalLabel.setToolTipText("");
 
-        intervalField.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        intervalField.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         intervalField.setText("0");
+        intervalField.setToolTipText("");
         intervalField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 intervalFieldActionPerformed(evt);
             }
         });
 
-        numberLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        numberLabel.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         numberLabel.setText("Numbers");
+        numberLabel.setToolTipText("");
 
-        numbersField.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        numbersField.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         numbersField.setText("0");
+        numbersField.setToolTipText("");
 
-        digitsLabel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        digitsLabel.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         digitsLabel.setText("Digits");
+        digitsLabel.setToolTipText("");
 
-        digitsField.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        digitsField.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         digitsField.setText("0");
+        digitsField.setToolTipText("");
 
-        startButton.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        startButton.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         startButton.setText("Start");
+        startButton.setToolTipText("");
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startButtonActionPerformed(evt);
@@ -82,10 +95,24 @@ public class FlashcardsGUI extends javax.swing.JFrame {
         notificationLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         notificationLabel.setForeground(new java.awt.Color(153, 153, 153));
         notificationLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        notificationLabel.setText("Please fill in the options, and then click \"Start\"");
+        notificationLabel.setText("Please fill in all the options, and then click \"Start\"");
 
-        titleLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        titleLabel.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLabel.setText("Orion Abacus Association");
+
+        answerButton.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        answerButton.setText("Answer");
+        answerButton.setEnabled(false);
+        answerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                answerButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Copyright © 2015 Orion Abacus Association. Software by Gabriel Lee.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,44 +121,49 @@ public class FlashcardsGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(displayLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
+                    .addComponent(notificationLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(intervalLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(intervalField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(intervalField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(numberLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(numbersField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(numbersField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(digitsLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(digitsField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(startButton))
-                    .addComponent(notificationLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(digitsField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
+                        .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(answerButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(intervalLabel)
-                        .addComponent(intervalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(numberLabel)
-                        .addComponent(numbersField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(digitsLabel)
-                        .addComponent(digitsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(startButton))
-                    .addComponent(titleLabel))
-                .addGap(30, 30, 30)
+                .addComponent(titleLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(notificationLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(displayLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(displayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(intervalLabel)
+                    .addComponent(intervalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numberLabel)
+                    .addComponent(numbersField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(digitsLabel)
+                    .addComponent(digitsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(startButton)
+                    .addComponent(answerButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -142,19 +174,49 @@ public class FlashcardsGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_intervalFieldActionPerformed
 
+    int sum = 0;
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         // TODO add your handling code here:
-        String number;
-        System.out.print("");
-        if (intervalField.getText() == "" || numbersField.getText() == "" || digitsField.getText() == ""){
+        answerButton.setEnabled(false);
+        sum = 0;
+
+        if (intervalField.getText() == "" || numbersField.getText() == "" || digitsField.getText() == "") {
             notificationLabel.setText("One or more fields are missing.");
             return;
-        } 
+        }
+
         notificationLabel.setText("Please fill in all the options, and then click \"Start\"");
-        number = Flashcards.commify(Flashcards.generateNumber(Integer.parseInt(digitsField.getText())));
-        System.out.println(number);
-        displayLabel.setText(number);
+        Timer timer = new Timer();
+        int interval = Integer.parseInt(intervalField.getText()); // milliseconds
+        
+        timer.schedule(new TimerTask() {
+            int count = 0;
+            int limit = Integer.parseInt(numbersField.getText());
+            @Override
+            public void run() {
+                
+                if (count == limit) {
+                    answerButton.setEnabled(true);
+                    timer.cancel();
+                    timer.purge();
+                    return;
+                }
+                String numberString = Flashcards.generateNumber(Integer.parseInt(digitsField.getText()));
+                int numberInt = Integer.parseInt(numberString);
+                System.out.println("Number: " + numberInt);
+                sum = sum + numberInt;
+                System.out.println("The sum is now: " + sum);
+                String commifiedNumber = Flashcards.commify(numberString);
+                displayLabel.setText(commifiedNumber);
+                count++;
+            }
+        }, new Date(), interval * 1000);
     }//GEN-LAST:event_startButtonActionPerformed
+
+    private void answerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_answerButtonActionPerformed
+        // TODO add your handling code here:
+        displayLabel.setText(Flashcards.commify(String.valueOf(sum)));
+    }//GEN-LAST:event_answerButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,11 +254,13 @@ public class FlashcardsGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton answerButton;
     private javax.swing.JTextField digitsField;
     private javax.swing.JLabel digitsLabel;
     private javax.swing.JLabel displayLabel;
     private javax.swing.JTextField intervalField;
     private javax.swing.JLabel intervalLabel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel notificationLabel;
     private javax.swing.JLabel numberLabel;
     private javax.swing.JTextField numbersField;
