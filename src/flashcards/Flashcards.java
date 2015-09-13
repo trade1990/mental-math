@@ -52,7 +52,6 @@ public class Flashcards {
         // TODO code application logic here
 //        Flashcards f = new Flashcards();
 //        System.out.println(String.valueOf((int)Math.floor((Math.random() * 9))));
-        System.out.println(commify(generateNumber(7)));
     }
 
 }
