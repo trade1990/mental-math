@@ -20,6 +20,7 @@ public class FlashcardsGUI extends javax.swing.JFrame {
      */
     public FlashcardsGUI() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(255, 255, 255));
     }
 
     /**
@@ -31,6 +32,8 @@ public class FlashcardsGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         displayLabel = new javax.swing.JLabel();
         intervalLabel = new javax.swing.JLabel();
         intervalField = new javax.swing.JTextField();
@@ -43,6 +46,20 @@ public class FlashcardsGUI extends javax.swing.JFrame {
         titleLabel = new javax.swing.JLabel();
         answerButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        fileMenu = new javax.swing.JMenu();
+        newTabMenuItem = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        exitMenuItem = new javax.swing.JMenuItem();
+        preferencesMenu = new javax.swing.JMenu();
+        settingsMenuItem = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        fontPopupMenu = new javax.swing.JMenu();
+        colorSchemePopupMenu = new javax.swing.JMenu();
+
+        jMenu1.setText("jMenu1");
+
+        jMenu2.setText("jMenu2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Orion Flashcards");
@@ -51,7 +68,7 @@ public class FlashcardsGUI extends javax.swing.JFrame {
         displayLabel.setBackground(new java.awt.Color(255, 255, 255));
         displayLabel.setFont(new java.awt.Font("Arial", 0, 120)); // NOI18N
         displayLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        displayLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        displayLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         intervalLabel.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         intervalLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -99,10 +116,10 @@ public class FlashcardsGUI extends javax.swing.JFrame {
 
         titleLabel.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleLabel.setText("Orion Abacus Association");
+        titleLabel.setText("Orion Flashcards");
 
         answerButton.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        answerButton.setText("Answer");
+        answerButton.setText("Show Answer");
         answerButton.setEnabled(false);
         answerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,6 +130,43 @@ public class FlashcardsGUI extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(153, 153, 153));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Copyright © 2015 Orion Abacus Association. Software by Gabriel Lee.");
+
+        fileMenu.setText("File");
+
+        newTabMenuItem.setText("New Tab");
+        newTabMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newTabMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(newTabMenuItem);
+        fileMenu.add(jSeparator1);
+
+        exitMenuItem.setText("Exit");
+        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(exitMenuItem);
+
+        jMenuBar1.add(fileMenu);
+
+        preferencesMenu.setText("Preferences");
+
+        settingsMenuItem.setText("Settings...");
+        preferencesMenu.add(settingsMenuItem);
+        preferencesMenu.add(jSeparator2);
+
+        fontPopupMenu.setText("Font");
+        preferencesMenu.add(fontPopupMenu);
+
+        colorSchemePopupMenu.setText("Color Scheme");
+        preferencesMenu.add(colorSchemePopupMenu);
+
+        jMenuBar1.add(preferencesMenu);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,7 +191,7 @@ public class FlashcardsGUI extends javax.swing.JFrame {
                         .addComponent(digitsLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(digitsField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
                         .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(answerButton)))
@@ -162,9 +216,9 @@ public class FlashcardsGUI extends javax.swing.JFrame {
                     .addComponent(digitsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(startButton)
                     .addComponent(answerButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -184,11 +238,12 @@ public class FlashcardsGUI extends javax.swing.JFrame {
             notificationLabel.setText("One or more fields are missing.");
             return;
         }
+        
 
         notificationLabel.setText("Please fill in all the options, and then click \"Start\"");
         Timer timer = new Timer();
-        int interval = Integer.parseInt(intervalField.getText()); // milliseconds
-        
+        long interval = (long)(Double.parseDouble(intervalField.getText()) * 1000); // milliseconds
+        System.out.print(interval);
         timer.schedule(new TimerTask() {
             int count = 0;
             int limit = Integer.parseInt(numbersField.getText());
@@ -196,6 +251,7 @@ public class FlashcardsGUI extends javax.swing.JFrame {
             public void run() {
                 
                 if (count == limit) {
+                    displayLabel.setText("Answer?");
                     answerButton.setEnabled(true);
                     timer.cancel();
                     timer.purge();
@@ -203,20 +259,26 @@ public class FlashcardsGUI extends javax.swing.JFrame {
                 }
                 String numberString = Flashcards.generateNumber(Integer.parseInt(digitsField.getText()));
                 int numberInt = Integer.parseInt(numberString);
-                System.out.println("Number: " + numberInt);
                 sum = sum + numberInt;
-                System.out.println("The sum is now: " + sum);
                 String commifiedNumber = Flashcards.commify(numberString);
                 displayLabel.setText(commifiedNumber);
                 count++;
             }
-        }, new Date(), interval * 1000);
+        }, new Date(), interval);
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void answerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_answerButtonActionPerformed
         // TODO add your handling code here:
         displayLabel.setText(Flashcards.commify(String.valueOf(sum)));
     }//GEN-LAST:event_answerButtonActionPerformed
+
+    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exitMenuItemActionPerformed
+
+    private void newTabMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newTabMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newTabMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,15 +317,27 @@ public class FlashcardsGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton answerButton;
+    private javax.swing.JMenu colorSchemePopupMenu;
     private javax.swing.JTextField digitsField;
     private javax.swing.JLabel digitsLabel;
     private javax.swing.JLabel displayLabel;
+    private javax.swing.JMenuItem exitMenuItem;
+    private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenu fontPopupMenu;
     private javax.swing.JTextField intervalField;
     private javax.swing.JLabel intervalLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JMenuItem newTabMenuItem;
     private javax.swing.JLabel notificationLabel;
     private javax.swing.JLabel numberLabel;
     private javax.swing.JTextField numbersField;
+    private javax.swing.JMenu preferencesMenu;
+    private javax.swing.JMenuItem settingsMenuItem;
     private javax.swing.JButton startButton;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
