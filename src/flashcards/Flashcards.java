@@ -24,6 +24,11 @@ public class Flashcards {
     }
 
     public static String commify(String str) {
+        boolean hasNegative = false;
+        if (str.charAt(0) == '-'){
+            str = str.substring(1);
+            hasNegative = true;
+        }
         int length = str.length();
         if (length < 4) {
             return str;
@@ -42,6 +47,9 @@ public class Flashcards {
                 commifiedString = commifiedString + str.charAt(i);
             }
         }
+        if (hasNegative) {
+            return "-" + commifiedString;
+        }
         return commifiedString;
     }
 
@@ -52,6 +60,8 @@ public class Flashcards {
         // TODO code application logic here
 //        Flashcards f = new Flashcards();
 //        System.out.println(String.valueOf((int)Math.floor((Math.random() * 9))));
+//           System.out.println(commify("123456789"));
+//           System.out.println(commify("-123456789"));
     }
 
 }

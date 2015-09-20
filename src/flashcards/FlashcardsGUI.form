@@ -27,12 +27,12 @@
             <Property name="text" type="java.lang.String" value="File"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="newTabMenuItem">
+            <MenuItem class="javax.swing.JMenuItem" name="newWindowMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="New Tab"/>
+                <Property name="text" type="java.lang.String" value="New Window"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newTabMenuItemActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newWindowMenuItemActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
@@ -47,28 +47,19 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="preferencesMenu">
+        <Menu class="javax.swing.JMenu" name="generateProblemMenuItem">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Preferences"/>
+            <Property name="text" type="java.lang.String" value="Settings"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="settingsMenuItem">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Settings..."/>
-              </Properties>
-            </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator2">
             </MenuItem>
-            <Menu class="javax.swing.JMenu" name="fontPopupMenu">
+            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="showExplanationCheckboxMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Font"/>
+                <Property name="selected" type="boolean" value="true"/>
+                <Property name="text" type="java.lang.String" value="Show Explanation"/>
               </Properties>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="colorSchemePopupMenu">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Color Scheme"/>
-              </Properties>
-            </Menu>
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>
@@ -112,15 +103,15 @@
                       <Component id="intervalLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="intervalField" min="-2" pref="100" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="numberLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="numbersField" min="-2" pref="100" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="digitsLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="digitsField" min="-2" pref="100" max="-2" attributes="0"/>
-                      <EmptySpace pref="157" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="numberLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="numbersField" min="-2" pref="100" max="-2" attributes="0"/>
+                      <EmptySpace pref="139" max="32767" attributes="0"/>
                       <Component id="startButton" min="-2" pref="111" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="answerButton" min="-2" max="-2" attributes="0"/>
@@ -143,12 +134,12 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="intervalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="intervalField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="numberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="numbersField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="digitsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="digitsField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="startButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="answerButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="digitsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="numberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="14" max="-2" attributes="0"/>
@@ -168,8 +159,8 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-            <BevelBorder/>
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder/>
           </Border>
         </Property>
       </Properties>

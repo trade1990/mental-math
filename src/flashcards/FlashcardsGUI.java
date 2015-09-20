@@ -20,6 +20,7 @@ public class FlashcardsGUI extends javax.swing.JFrame {
      */
     public FlashcardsGUI() {
         initComponents();
+        // Extra design modifications to generated code
         getContentPane().setBackground(new java.awt.Color(255, 255, 255));
     }
 
@@ -48,14 +49,12 @@ public class FlashcardsGUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
-        newTabMenuItem = new javax.swing.JMenuItem();
+        newWindowMenuItem = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         exitMenuItem = new javax.swing.JMenuItem();
-        preferencesMenu = new javax.swing.JMenu();
-        settingsMenuItem = new javax.swing.JMenuItem();
+        generateProblemMenuItem = new javax.swing.JMenu();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        fontPopupMenu = new javax.swing.JMenu();
-        colorSchemePopupMenu = new javax.swing.JMenu();
+        showExplanationCheckboxMenuItem = new javax.swing.JCheckBoxMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -68,7 +67,7 @@ public class FlashcardsGUI extends javax.swing.JFrame {
         displayLabel.setBackground(new java.awt.Color(255, 255, 255));
         displayLabel.setFont(new java.awt.Font("Arial", 0, 120)); // NOI18N
         displayLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        displayLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        displayLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         intervalLabel.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         intervalLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -133,13 +132,13 @@ public class FlashcardsGUI extends javax.swing.JFrame {
 
         fileMenu.setText("File");
 
-        newTabMenuItem.setText("New Tab");
-        newTabMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        newWindowMenuItem.setText("New Window");
+        newWindowMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newTabMenuItemActionPerformed(evt);
+                newWindowMenuItemActionPerformed(evt);
             }
         });
-        fileMenu.add(newTabMenuItem);
+        fileMenu.add(newWindowMenuItem);
         fileMenu.add(jSeparator1);
 
         exitMenuItem.setText("Exit");
@@ -152,19 +151,14 @@ public class FlashcardsGUI extends javax.swing.JFrame {
 
         jMenuBar1.add(fileMenu);
 
-        preferencesMenu.setText("Preferences");
+        generateProblemMenuItem.setText("Settings");
+        generateProblemMenuItem.add(jSeparator2);
 
-        settingsMenuItem.setText("Settings...");
-        preferencesMenu.add(settingsMenuItem);
-        preferencesMenu.add(jSeparator2);
+        showExplanationCheckboxMenuItem.setSelected(true);
+        showExplanationCheckboxMenuItem.setText("Show Explanation");
+        generateProblemMenuItem.add(showExplanationCheckboxMenuItem);
 
-        fontPopupMenu.setText("Font");
-        preferencesMenu.add(fontPopupMenu);
-
-        colorSchemePopupMenu.setText("Color Scheme");
-        preferencesMenu.add(colorSchemePopupMenu);
-
-        jMenuBar1.add(preferencesMenu);
+        jMenuBar1.add(generateProblemMenuItem);
 
         setJMenuBar(jMenuBar1);
 
@@ -183,15 +177,15 @@ public class FlashcardsGUI extends javax.swing.JFrame {
                         .addComponent(intervalLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(intervalField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numberLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(numbersField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(digitsLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(digitsField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(numberLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(numbersField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
                         .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(answerButton)))
@@ -210,12 +204,12 @@ public class FlashcardsGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(intervalLabel)
                     .addComponent(intervalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numberLabel)
                     .addComponent(numbersField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(digitsLabel)
                     .addComponent(digitsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(startButton)
-                    .addComponent(answerButton))
+                    .addComponent(answerButton)
+                    .addComponent(digitsLabel)
+                    .addComponent(numberLabel))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
@@ -225,39 +219,52 @@ public class FlashcardsGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void intervalFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_intervalFieldActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_intervalFieldActionPerformed
 
     int sum = 0;
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
-        // TODO add your handling code here:
         answerButton.setEnabled(false);
         sum = 0;
 
-        if (intervalField.getText() == "" || numbersField.getText() == "" || digitsField.getText() == "") {
-            notificationLabel.setText("One or more fields are missing.");
+        long interval;
+        int digits;
+        int numbers;
+        try {
+            interval = (long) Double.parseDouble(intervalField.getText()) * 1000;
+            digits = Integer.parseInt(digitsField.getText());
+            numbers = Integer.parseInt(numbersField.getText());
+        } catch (Exception e) {
+            notificationLabel.setText("Please check your fields again.");
+            notificationLabel.setForeground(new java.awt.Color(255, 0, 0));
             return;
         }
-        
+
+        if ((interval > 0) && (digits > 0) && (numbers > 0)) {
+            // nothing
+        } else {
+            notificationLabel.setText("Please check your fields again.");
+            notificationLabel.setForeground(new java.awt.Color(255, 0, 0));
+            return;
+        }
 
         notificationLabel.setText("Please fill in all the options, and then click \"Start\"");
+        notificationLabel.setForeground(new java.awt.Color(153, 153, 153));
         Timer timer = new Timer();
-        long interval = (long)(Double.parseDouble(intervalField.getText()) * 1000); // milliseconds
-        System.out.print(interval);
+        // debugging
+        
         timer.schedule(new TimerTask() {
             int count = 0;
-            int limit = Integer.parseInt(numbersField.getText());
+
             @Override
             public void run() {
-                
-                if (count == limit) {
+                if (count == numbers) {
                     displayLabel.setText("Answer?");
                     answerButton.setEnabled(true);
                     timer.cancel();
                     timer.purge();
                     return;
                 }
-                String numberString = Flashcards.generateNumber(Integer.parseInt(digitsField.getText()));
+                String numberString = Flashcards.generateNumber(digits);
                 int numberInt = Integer.parseInt(numberString);
                 sum = sum + numberInt;
                 String commifiedNumber = Flashcards.commify(numberString);
@@ -274,11 +281,17 @@ public class FlashcardsGUI extends javax.swing.JFrame {
 
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
-    private void newTabMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newTabMenuItemActionPerformed
+    private void newWindowMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newWindowMenuItemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_newTabMenuItemActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new FlashcardsGUI().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_newWindowMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -313,17 +326,17 @@ public class FlashcardsGUI extends javax.swing.JFrame {
                 new FlashcardsGUI().setVisible(true);
             }
         });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton answerButton;
-    private javax.swing.JMenu colorSchemePopupMenu;
     private javax.swing.JTextField digitsField;
     private javax.swing.JLabel digitsLabel;
     private javax.swing.JLabel displayLabel;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu fontPopupMenu;
+    private javax.swing.JMenu generateProblemMenuItem;
     private javax.swing.JTextField intervalField;
     private javax.swing.JLabel intervalLabel;
     private javax.swing.JLabel jLabel1;
@@ -332,12 +345,11 @@ public class FlashcardsGUI extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
-    private javax.swing.JMenuItem newTabMenuItem;
+    private javax.swing.JMenuItem newWindowMenuItem;
     private javax.swing.JLabel notificationLabel;
     private javax.swing.JLabel numberLabel;
     private javax.swing.JTextField numbersField;
-    private javax.swing.JMenu preferencesMenu;
-    private javax.swing.JMenuItem settingsMenuItem;
+    private javax.swing.JCheckBoxMenuItem showExplanationCheckboxMenuItem;
     private javax.swing.JButton startButton;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
