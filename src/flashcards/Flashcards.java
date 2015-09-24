@@ -43,8 +43,9 @@ public class Flashcards {
                 } else {
                     commifiedString = commifiedString + str.charAt(i);
                 }
-            } else {
-                commifiedString = commifiedString + str.charAt(i);
+            } 
+            else {
+             commifiedString = commifiedString + str.charAt(i);
             }
         }
         if (hasNegative) {
@@ -52,6 +53,8 @@ public class Flashcards {
         }
         return commifiedString;
     }
+    
+    
 
     /**
      * @param args the command line arguments

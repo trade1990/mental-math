@@ -60,7 +60,7 @@ public class FlashcardsGUI extends javax.swing.JFrame {
 
         jMenu2.setText("jMenu2");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Orion Flashcards");
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -281,7 +281,7 @@ public class FlashcardsGUI extends javax.swing.JFrame {
 
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
         // TODO add your handling code here:
-
+        dispose();
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void newWindowMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newWindowMenuItemActionPerformed
