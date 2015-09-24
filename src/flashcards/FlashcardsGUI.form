@@ -111,8 +111,10 @@
                       <Component id="numberLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="numbersField" min="-2" pref="100" max="-2" attributes="0"/>
-                      <EmptySpace pref="139" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="startButton" min="-2" pref="111" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="clearButton" pref="123" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="answerButton" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -131,19 +133,22 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="displayLabel" min="-2" pref="213" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="intervalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="intervalField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="numbersField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="digitsField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="startButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="answerButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="digitsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="numberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="intervalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="intervalField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="numbersField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="digitsField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="startButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="answerButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="digitsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="numberLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="clearButton" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace pref="23" max="32767" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="14" max="-2" attributes="0"/>
-              <EmptySpace pref="15" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -276,6 +281,17 @@
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Copyright &#xa9; 2015 Orion Abacus Association. Software by Gabriel Lee."/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="clearButton">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="24" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Clear"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

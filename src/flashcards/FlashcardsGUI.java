@@ -47,6 +47,7 @@ public class FlashcardsGUI extends javax.swing.JFrame {
         titleLabel = new javax.swing.JLabel();
         answerButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        clearButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         newWindowMenuItem = new javax.swing.JMenuItem();
@@ -130,6 +131,14 @@ public class FlashcardsGUI extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Copyright © 2015 Orion Abacus Association. Software by Gabriel Lee.");
 
+        clearButton.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        clearButton.setText("Clear");
+        clearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearButtonActionPerformed(evt);
+            }
+        });
+
         fileMenu.setText("File");
 
         newWindowMenuItem.setText("New Window");
@@ -185,8 +194,10 @@ public class FlashcardsGUI extends javax.swing.JFrame {
                         .addComponent(numberLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(numbersField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(clearButton, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(answerButton)))
                 .addContainerGap())
@@ -201,18 +212,20 @@ public class FlashcardsGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(displayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(intervalLabel)
-                    .addComponent(intervalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numbersField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(digitsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(startButton)
-                    .addComponent(answerButton)
-                    .addComponent(digitsLabel)
-                    .addComponent(numberLabel))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(intervalLabel)
+                        .addComponent(intervalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(numbersField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(digitsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(startButton)
+                        .addComponent(answerButton)
+                        .addComponent(digitsLabel)
+                        .addComponent(numberLabel))
+                    .addComponent(clearButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
 
         pack();
@@ -222,6 +235,7 @@ public class FlashcardsGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_intervalFieldActionPerformed
 
     int sum = 0;
+    Timer timer;
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         answerButton.setEnabled(false);
         sum = 0;
@@ -249,7 +263,7 @@ public class FlashcardsGUI extends javax.swing.JFrame {
 
         notificationLabel.setText("Please fill in all the options, and then click \"Start\"");
         notificationLabel.setForeground(new java.awt.Color(153, 153, 153));
-        Timer timer = new Timer();
+        timer = new Timer();
         // debugging
         
         timer.schedule(new TimerTask() {
@@ -293,6 +307,12 @@ public class FlashcardsGUI extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_newWindowMenuItemActionPerformed
 
+    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
+        // TODO add your handling code here:
+        timer.cancel();
+        displayLabel.setText("");
+    }//GEN-LAST:event_clearButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -331,6 +351,7 @@ public class FlashcardsGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton answerButton;
+    private javax.swing.JButton clearButton;
     private javax.swing.JTextField digitsField;
     private javax.swing.JLabel digitsLabel;
     private javax.swing.JLabel displayLabel;
